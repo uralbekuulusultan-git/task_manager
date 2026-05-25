@@ -3,7 +3,7 @@
   "model": "webapp.task",
   "pk": 1,
   "fields": {
-    "description": "Подготовить план проекта",
+    "description": "РџРѕРґРіРѕС‚РѕРІРёС‚СЊ РїР»Р°РЅ РїСЂРѕРµРєС‚Р°",
     "status": "new",
     "due_date": "2026-05-27"
   }
@@ -12,7 +12,7 @@
   "model": "webapp.task",
   "pk": 2,
   "fields": {
-    "description": "Сверстать страницу списка задач",
+    "description": "РЎРІРµСЂСЃС‚Р°С‚СЊ СЃС‚СЂР°РЅРёС†Сѓ СЃРїРёСЃРєР° Р·Р°РґР°С‡",
     "status": "in_progress",
     "due_date": "2026-05-28"
   }
@@ -21,7 +21,7 @@
   "model": "webapp.task",
   "pk": 3,
   "fields": {
-    "description": "Проверить удаление задач",
+    "description": "РџСЂРѕРІРµСЂРёС‚СЊ СѓРґР°Р»РµРЅРёРµ Р·Р°РґР°С‡",
     "status": "done",
     "due_date": "2026-05-29"
   }
