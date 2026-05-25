@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{% static 'webapp/css/styles.css' %}">
+</head>
+<body>
+<main class="page">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">Task Manager</p>
+            <h1>Задачи</h1>
+        </div>
+        <div class="stats" aria-label="Статистика задач">
+            <div class="stat">
+                <span>{{ view_model.total_count }}</span>
+                <small>всего</small>
+            </div>
+            <div class="stat">
+                <span>{{ view_model.new_count }}</span>
+                <small>новые</small>
+            </div>
+            <div class="stat">
+                <span>{{ view_model.in_progress_count }}</span>
+                <small>в работе</small>
+            </div>
+            <div class="stat">
+                <span>{{ view_model.done_count }}</span>
+                <small>готово</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="workspace">
+        <form class="task-form" method="post">
+            {% csrf_token %}
+            <h2>Новая задача</h2>
+
+            <label for="{{ view_model.form.description.id_for_label }}">Описание</label>
+            {{ view_model.form.description }}
+            {{ view_model.form.description.errors }}
+
+            <div class="form-row">
+                <div>
+                    <label for="{{ view_model.form.status.id_for_label }}">Статус</label>
+                    {{ view_model.form.status }}
+                    {{ view_model.form.status.errors }}
+                </div>
+                <div>
+                    <label for="{{ view_model.form.due_date.id_for_label }}">Дата выполнения</label>
+                    {{ view_model.form.due_date }}
+                    {{ view_model.form.due_date.errors }}
+                </div>
+            </div>
+
+            <button class="primary-button" type="submit">Добавить задачу</button>
+        </form>
+
+        <section class="task-list" aria-label="Список задач">
+            {% for task in view_model.tasks %}
+                <article class="task-item">
+                    <div class="task-content">
+                        <span class="status status-{{ task.status }}">{{ task.get_status_display }}</span>
+                        <p>{{ task.description }}</p>
+                        <time datetime="{{ task.due_date|date:'Y-m-d' }}">{{ task.due_date|date:'Y-m-d' }}</time>
+                    </div>
+                    <form method="post" action="{% url 'task_delete' task.pk %}">
+                        {% csrf_token %}
+                        <button class="delete-button" type="submit" aria-label="Удалить задачу">Удалить</button>
+                    </form>
+                </article>
+            {% empty %}
+                <div class="empty-state">
+                    <h2>Задач пока нет</h2>
+                </div>
+            {% endfor %}
+        </section>
+    </section>
+</main>
+</body>
+</html>
