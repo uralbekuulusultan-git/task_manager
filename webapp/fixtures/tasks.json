@@ -1,0 +1,29 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "description": "Подготовить план проекта",
+    "status": "new",
+    "due_date": "2026-05-27"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 2,
+  "fields": {
+    "description": "Сверстать страницу списка задач",
+    "status": "in_progress",
+    "due_date": "2026-05-28"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "description": "Проверить удаление задач",
+    "status": "done",
+    "due_date": "2026-05-29"
+  }
+}
+]
