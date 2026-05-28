@@ -20,6 +20,7 @@ class TaskViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Проверить список задач')
         self.assertContains(response, '2026-05-27')
+        self.assertContains(response, 'Подробное описание')
         self.assertNotContains(response, 'Это подробное описание не должно быть на главной')
 
     def test_task_can_be_created(self):

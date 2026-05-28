@@ -37,6 +37,10 @@
             {{ view_model.form.description }}
             {{ view_model.form.description.errors }}
 
+            <label for="{{ view_model.form.detailed_description.id_for_label }}">Подробное описание</label>
+            {{ view_model.form.detailed_description }}
+            {{ view_model.form.detailed_description.errors }}
+
             <div class="form-row">
                 <div>
                     <label for="{{ view_model.form.status.id_for_label }}">Статус</label>
