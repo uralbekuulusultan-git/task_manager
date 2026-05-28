@@ -7,4 +7,4 @@ from .models import Task
 class TaskAdmin(admin.ModelAdmin):
     list_display = ('description', 'status', 'due_date')
     list_filter = ('status', 'due_date')
-    search_fields = ('description',)
+    search_fields = ('description', 'detailed_description')

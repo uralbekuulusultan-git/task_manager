@@ -13,6 +13,7 @@ class Task(models.Model):
     ]
 
     description = models.TextField('Описание')
+    detailed_description = models.TextField('Подробное описание', blank=True)
     status = models.CharField(
         'Статус',
         max_length=20,

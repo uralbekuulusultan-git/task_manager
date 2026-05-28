@@ -1,14 +1,8 @@
-{% load static %}
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="{% static 'webapp/css/styles.css' %}">
-</head>
-<body>
-<main class="page">
+{% extends 'webapp/base.html' %}
+
+{% block title %}Задачи - Task Manager{% endblock %}
+
+{% block content %}
     <section class="hero">
         <div>
             <p class="eyebrow">Task Manager</p>
@@ -66,6 +60,7 @@
                         <span class="status status-{{ task.status }}">{{ task.get_status_display }}</span>
                         <p>{{ task.description }}</p>
                         <time datetime="{{ task.due_date|date:'Y-m-d' }}">{{ task.due_date|date:'Y-m-d' }}</time>
+                        <a class="detail-link" href="{% url 'task_detail' task.pk %}">Подробнее</a>
                     </div>
                     <form method="post" action="{% url 'task_delete' task.pk %}">
                         {% csrf_token %}
@@ -79,6 +74,4 @@
             {% endfor %}
         </section>
     </section>
-</main>
-</body>
-</html>
+{% endblock %}
