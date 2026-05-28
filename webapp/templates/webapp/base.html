@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Task Manager{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'webapp/css/styles.css' %}">
+</head>
+<body>
+<header class="site-header">
+    <nav class="nav">
+        <a class="brand" href="{% url 'task_list' %}">Task Manager</a>
+        <a class="nav-link" href="{% url 'task_list' %}">Задачи</a>
+    </nav>
+</header>
+
+<main class="page">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

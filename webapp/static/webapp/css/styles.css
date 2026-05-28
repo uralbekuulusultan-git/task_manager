@@ -24,6 +24,48 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(217, 225, 238, 0.85);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(1120px, calc(100% - 32px));
+    min-height: 64px;
+    margin: 0 auto;
+}
+
+.brand,
+.nav-link {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.nav-link {
+    min-height: 36px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.nav-link:hover {
+    color: var(--blue);
+    background: #eff6ff;
+}
+
 button,
 input,
 select,
