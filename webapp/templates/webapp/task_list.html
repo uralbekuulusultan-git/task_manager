@@ -66,6 +66,7 @@
                         <span class="status status-{{ task.status }}">{{ task.get_status_display }}</span>
                         <p>{{ task.description }}</p>
                         <time datetime="{{ task.due_date|date:'Y-m-d' }}">{{ task.due_date|date:'Y-m-d' }}</time>
+                        <a class="detail-link" href="{% url 'task_detail' task.pk %}">Подробнее</a>
                     </div>
                     <form method="post" action="{% url 'task_delete' task.pk %}">
                         {% csrf_token %}

@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ task.description }} - Task Manager</title>
+    <link rel="stylesheet" href="{% static 'webapp/css/styles.css' %}">
+</head>
+<body>
+<main class="page">
+    <section class="hero detail-hero">
+        <div>
+            <p class="eyebrow">Task Manager</p>
+            <h1>Детали задачи</h1>
+        </div>
+        <a class="secondary-button" href="{% url 'task_list' %}">К списку</a>
+    </section>
+
+    <article class="detail-panel">
+        <div class="detail-header">
+            <span class="status status-{{ task.status }}">{{ task.get_status_display }}</span>
+            <time datetime="{{ task.due_date|date:'Y-m-d' }}">{{ task.due_date|date:'Y-m-d' }}</time>
+        </div>
+
+        <section class="detail-section">
+            <h2>Описание</h2>
+            <p>{{ task.description }}</p>
+        </section>
+
+        <section class="detail-section">
+            <h2>Подробное описание</h2>
+            {% if task.detailed_description %}
+                <div class="multiline-text">{{ task.detailed_description|linebreaksbr }}</div>
+            {% else %}
+                <p class="muted">Подробное описание не заполнено.</p>
+            {% endif %}
+        </section>
+
+        <form method="post" action="{% url 'task_delete' task.pk %}">
+            {% csrf_token %}
+            <button class="delete-button" type="submit">Удалить задачу</button>
+        </form>
+    </article>
+</main>
+</body>
+</html>

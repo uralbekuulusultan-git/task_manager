@@ -16,6 +16,11 @@ def task_list(request):
     return render(request, 'webapp/task_list.html', {'view_model': view_model})
 
 
+def task_detail(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'webapp/task_detail.html', {'task': task})
+
+
 def task_delete(request, pk):
     task = get_object_or_404(Task, pk=pk)
 
